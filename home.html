@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payoo Mobile Bank</title>
+    <!-- daisy UI cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- tailwindcss -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="bg-[#f4f5f7] max-w-md mx-auto">
+      <div class="bg-white">
+        <div class="flex justify-between items-center border-b-2 py-2.5">
+          <div class="flex items-center gap-1.5">
+            <img src="./assets/Group.png" class="w-[60px]" alt="" />
+            <div>
+              <h2 class="font-bold text-2xl">$<span id="available-balance">45000</span></h2>
+              <p>Available Balance</p>
+            </div>
+          </div>
+          <div>
+            <button class="btn">Log Out</button>
+          </div>
+        </div>
+
+        <div class="mt-8 px-3.5 mb-8">
+          <h1 class="font-bold text-4xl">Welcome to Payooo!</h1>
+          <p>
+            Enjoy easy and convenient financial services with us Cashout charge
+            is low and
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 grid-rows-2 gap-2.5">
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100" id="add-money-card"
+          >
+            <img src="./assets/wallet1.png" class="w-6 h-6" alt="" />
+            <p class="group-hover:text-blue-600">Add Money</p>
+          </div>
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100" id="cash-out-card"
+          >
+            <img src="./assets/wallet1.png" alt="" />
+            <p class="hover:text-blue-600">Cash Out</p>
+          </div>
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100"
+          >
+            <img src="./assets/wallet1.png" alt="" />
+            <p class="hover:text-blue-600">Add Money</p>
+          </div>
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100"
+          >
+            <img src="./assets/wallet1.png" alt="" />
+            <p class="hover:text-blue-600">Add Money</p>
+          </div>
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100"
+          >
+            <img src="./assets/wallet1.png" alt="" />
+            <p class="hover:text-blue-600">Add Money</p>
+          </div>
+          <div
+            class="border-2 border-gray-300 cursor-pointer hover:border-blue-600 p-3.5 rounded-lg flex flex-col items-center group hover:bg-blue-100"
+          >
+            <img src="./assets/wallet1.png" alt="" />
+            <p class="hover:text-blue-600">Add Money</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="all-form-container" class="bg-[#f4f5f7] mt-8">
+
+        <!-- Add Money section  -->
+        <div id="add-money-container" class="container" style="display: none;">
+          <h1 class="font-bold text-2xl">Add Money</h1>
+          <form>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Bank Account Number</legend>
+              <input
+                type="text"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Enter 11 digit account number"
+                id="bank-account-number"
+              />
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Amount to Add</legend>
+              <input
+                type="text"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Add Amount to add"
+                id="add-amount"
+              />
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Pin Number</legend>
+              <input
+                type="password"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Enter your pin number"
+                id="add-pin"
+              />
+            </fieldset>
+
+            <button class="btn bg-blue-600 w-full mt-6" id="add-money-btn">
+              Add Money
+            </button>
+          </form>
+        </div>
+
+        <!-- Cash Out section  -->
+        <div id="cash-out-container" class="container" style="display: none;">
+          <h1 class="font-bold text-2xl">Cash Out</h1>
+          <form>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Agent number</legend>
+              <input
+                type="text"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Enter 10 digit agent number"
+                id="agent-number"
+              />
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Amount to cash out</legend>
+              <input
+                type="text"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Add Amount to cash out"
+                id="cash-out-amount"
+              />
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Pin Number</legend>
+              <input
+                type="password"
+                class="input w-full bg-[#f4f5f7]"
+                placeholder="Enter your pin number"
+                id="cash-out-pin"
+              />
+            </fieldset>
+
+            <button class="btn bg-blue-600 w-full mt-6" id="add-money-btn">
+              Withdraw Money
+            </button>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script>
+        const validPin = 1234;
+        document.getElementById("add-money-btn").addEventListener("click", function(e) {
+            e.preventDefault();
+            const availableBalance = parseInt(document.getElementById("available-balance").innerText);
+            const bankAccount = document.getElementById("bank-account-number").value;
+            const addAmountValue = parseInt(document.getElementById("add-amount").value);
+            const addPin = parseInt(document.getElementById("add-pin").value);
+
+            if (bankAccount.length > 10) {
+                alert("Please Provide a valid account number.");
+                return;
+            }
+            if (addPin !== validPin) {
+                alert("Please provide a valid pin.");
+                return;
+            }
+
+            const newAvailableBalance = availableBalance + addAmountValue;
+
+            document.getElementById("available-balance").innerText = newAvailableBalance;
+        });
+
+
+        const containers = document.getElementsByClassName("container");
+
+        document.getElementById("add-money-card").addEventListener("click", function() {
+            for (const container of containers) {
+                container.style.display = "none";
+            }
+            document.getElementById("add-money-container").style.display = "block";
+        });
+        document.getElementById("cash-out-card").addEventListener("click", function() {
+            for (const container of containers) {
+                container.style.display = "none";
+            }
+            document.getElementById("cash-out-container").style.display = "block";
+        });
+
+
+    </script>
+  </body>
+</html>

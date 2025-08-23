@@ -83,3 +83,16 @@ document.getElementById("cash-out-card").addEventListener("click", function () {
     document.getElementById("cash-out-card").classList.add("active-card");
   }
 });
+// Add addEventListener on Transfer Money Card
+document.getElementById("transfer-money-card").addEventListener("click", function () {
+  for (const container of containers) {
+    container.style.display = "none";
+  }
+  document.getElementById("transfer-money-container").style.display = "block";
+
+  const cards = document.getElementsByClassName("card");
+  for (const card of cards) {
+    card.classList.remove("active-card");
+    document.getElementById("transfer-money-card").classList.add("active-card");
+  }
+});

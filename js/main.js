@@ -12,7 +12,12 @@ document.getElementById('log-in-btn').addEventListener("click", function(e) {
     if (databaseMobile === userMobileNumber && databasePin === userPin) {
         window.location.href = "./home.html";
     } else {
-        alert("Invalid Credemtials");
+        if (databaseMobile !== userMobileNumber) {
+            document.getElementById("mobile-number-text").innerText = "Invalid mobile number";
+        }
+        if (databasePin !== userPin) {
+            document.getElementById("pin-number-text").innerText = "Invalid pin";
+        }
     }
 
 });

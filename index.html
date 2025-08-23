@@ -14,29 +14,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="bg-[#f4f5f7]">
+
     <div class="flex items-center justify-center h-[100vh]">
-      <form class="min-w-md p-8 bg-white rounded-4xl">
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">Mobile Number</legend>
-          <input
-            type="text"
-            class="input w-full bg-red-600 border-none outline-none"
-            placeholder="Your Mobile number"
-            id="mobile-number"
-          />
+
+      <form class="max-w-md w-[350px] p-8 bg-white rounded-4xl shadow-2xl">
+        <fieldset>
+          <legend class="my-2 font-semibold">Mobile NUmber</legend>
+          <input type="text" placeholder="Your Mobile number"
+          id="mobile-number" class="bg-[#f4f5f7] outline-none border-none rounded-4xl p-2 px-4 w-full">
         </fieldset>
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">4 digit pin</legend>
-          <input
-            type="password"
-            class="input w-full bg-[#f4f5f7]"
-            placeholder="Your pin"
-            id="pin-number"
-          />
+        <fieldset class="mt-2.5">
+          <legend class="my-2 font-semibold">4 digit Pin</legend>
+          <input type="password" placeholder="Your Pin"
+            id="pin-number" class="bg-[#f4f5f7] outline-none border-none rounded-4xl p-2 px-4 w-full">
         </fieldset>
-        <button class="btn bg-blue-600 w-full mt-6" id="log-in-btn">
-          LogIn
+
+        <button class="btn bg-blue-600 w-full mt-6 rounded-4xl text-white" id="log-in-btn">
+          Log In
         </button>
+
       </form>
     </div>
 

@@ -1,0 +1,9 @@
+
+
+.active-card {
+    background-color: rgba(0, 136, 248, 0.219);
+    border-color: rgba(0, 0, 255, 0.658);
+}
+.active-card p{
+    color: rgba(0, 0, 255, 0.712);
+}

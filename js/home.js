@@ -24,8 +24,13 @@ document
 
     const newAvailableBalance = availableBalance + addAmountValue;
 
-    document.getElementById("available-balance").innerText =
-      newAvailableBalance;
+    document.getElementById("available-balance").innerText = newAvailableBalance;
+
+
+    document.getElementById("success-text").innerText = `${addAmountValue}$ is added successfully`;
+    document.getElementById("success-msg-container").classList.remove("hidden");
+    // not success-msg-container. icon tag also consider as innerText. 
+    // that's why it will remove the icon while changing innerText.
   });
 
 // add addEventListener on Cash Out Button
@@ -52,6 +57,9 @@ document.getElementById("cash-out-btn").addEventListener("click", function (e) {
   const newAvailableBalance = availableBalance - cashOutAmount;
 
   document.getElementById("available-balance").innerText = newAvailableBalance;
+
+  document.getElementById("success-text").innerText = `${cashOutAmount}$ is withdrawed successfully`;
+  document.getElementById("success-msg-container").classList.remove("hidden");
 });
 
 // add addEventListener on Add Money Card
@@ -95,4 +103,9 @@ document.getElementById("transfer-money-card").addEventListener("click", functio
     card.classList.remove("active-card");
     document.getElementById("transfer-money-card").classList.add("active-card");
   }
+});
+
+
+document.getElementById("close-success-msg").addEventListener("click", function() {
+  document.getElementById("success-msg-container").classList.add("hidden");
 });

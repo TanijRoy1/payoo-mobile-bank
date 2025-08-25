@@ -36,13 +36,12 @@ function cardClick (id) {
     document.getElementById(id + "-card").classList.add("active-card");
   });
 }
-// Add Money Card
+// Cards
 cardClick("add-money");
-// Cash Out Card
 cardClick("cash-out");
-// Transfer Money Card
 cardClick("transfer-money");
-// Transactions Card 
+cardClick("get-bonus");
+cardClick("pay-bill");
 cardClick("transactions");
 
 

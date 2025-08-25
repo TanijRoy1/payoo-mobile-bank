@@ -42,7 +42,7 @@ document
     document.getElementById("available-balance").innerText = newAvailableBalance;
 
     document.getElementById("success-text").innerText = `${addAmountValue}$ is added successfully`;
-    document.getElementById("success-msg-container").classList.remove("hidden");
+    document.getElementById("success-msg-container").classList.remove("opacity-0");
     // not success-msg-container. icon tag also consider as innerText. 
     // that's why it will remove the icon while changing innerText.
   });
@@ -78,8 +78,10 @@ function cardClick (id) {
     const containers = document.getElementsByClassName("container");
     for (const container of containers) {
       container.style.display = "none";
+      container.classList.remove("active-container")
     }
     document.getElementById(id + "-container").style.display = "block";
+    document.getElementById(id + "-container").classList.add("active-container");
 
     const cards = document.getElementsByClassName("card");
     for (const card of cards) {

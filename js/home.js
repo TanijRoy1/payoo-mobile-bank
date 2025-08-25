@@ -36,12 +36,15 @@ function cardClick (id) {
     document.getElementById(id + "-card").classList.add("active-card");
   });
 }
-// add addEventListener on Add Money Card
+// Add Money Card
 cardClick("add-money");
-// Add addEventListener on Cash Out Card
+// Cash Out Card
 cardClick("cash-out");
-// Add addEventListener on Transfer Money Card
+// Transfer Money Card
 cardClick("transfer-money");
+// Transactions Card 
+cardClick("transactions");
+
 
 
 // add eventLister on Add Money Button

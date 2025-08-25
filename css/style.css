@@ -8,7 +8,7 @@
     color: rgba(0, 0, 255, 0.712);
 }
 .active-container{
-    animation: slideLeft .8s ease-in-out 0s forwards;
+    animation: slideLeft .8s ease-out 0s forwards;
 }
 @keyframes slideLeft {
     0%{

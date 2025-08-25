@@ -1,17 +1,33 @@
 const validPin = 1234;
+
+// get input value as integer
+function getInputValueNumber(id) {  
+  const inputValue = document.getElementById(id).value;
+  const inputValueNumber = parseInt(inputValue);
+  return inputValueNumber;
+}
+// get innerText as number 
+function getInnerTextNumber (id) {
+  const text = document.getElementById(id).innerText;
+  const textNumber = parseInt(text);
+  return textNumber;
+}
+// get input value as string
+function getInputValueString (id) {
+  const inputValueStr = document.getElementById(id).value;
+  return inputValueStr;
+}
+
+
 // add eventLister on Add Money Button
 document
   .getElementById("add-money-btn")
   .addEventListener("click", function (e) {
     e.preventDefault();
-    const availableBalance = parseInt(
-      document.getElementById("available-balance").innerText
-    );
-    const bankAccount = document.getElementById("bank-account-number").value;
-    const addAmountValue = parseInt(
-      document.getElementById("add-amount").value
-    );
-    const addPin = parseInt(document.getElementById("add-pin").value);
+    const availableBalance = getInnerTextNumber("available-balance");
+    addAmountValue = getInputValueNumber("add-amount");
+    const addPin = getInputValueNumber("add-pin");
+    const bankAccount = getInputValueString("bank-account-number");
 
     if (bankAccount.length > 10) {
       alert("Please Provide a valid account number.");
@@ -23,9 +39,7 @@ document
     }
 
     const newAvailableBalance = availableBalance + addAmountValue;
-
     document.getElementById("available-balance").innerText = newAvailableBalance;
-
 
     document.getElementById("success-text").innerText = `${addAmountValue}$ is added successfully`;
     document.getElementById("success-msg-container").classList.remove("hidden");
@@ -36,14 +50,10 @@ document
 // add addEventListener on Cash Out Button
 document.getElementById("cash-out-btn").addEventListener("click", function (e) {
   e.preventDefault();
-  const availableBalance = parseInt(
-    document.getElementById("available-balance").innerText
-  );
-  const agentNumber = document.getElementById("agent-number").value;
-  const cashOutAmount = parseInt(
-    document.getElementById("cash-out-amount").value
-  );
-  const cashOutPin = parseInt(document.getElementById("cash-out-pin").value);
+  const availableBalance = getInnerTextNumber("available-balance");
+  const cashOutAmount = getInputValueNumber("cash-out-amount");
+  const cashOutPin = getInputValueNumber("cash-out-pin");
+  const agentNumber = getInputValueString("agent-number");
 
   if (agentNumber.length > 10) {
     alert("Please Provide a valid account number.");
@@ -55,57 +65,37 @@ document.getElementById("cash-out-btn").addEventListener("click", function (e) {
   }
 
   const newAvailableBalance = availableBalance - cashOutAmount;
-
   document.getElementById("available-balance").innerText = newAvailableBalance;
 
   document.getElementById("success-text").innerText = `${cashOutAmount}$ is withdrawed successfully`;
   document.getElementById("success-msg-container").classList.remove("hidden");
 });
 
-// add addEventListener on Add Money Card
-const containers = document.getElementsByClassName("container");
-document
-  .getElementById("add-money-card")
-  .addEventListener("click", function () {
+
+// add addEventListener to each card using funcsion
+function cardClick (id) {
+  document.getElementById(id + "-card").addEventListener("click", function() {
+    const containers = document.getElementsByClassName("container");
     for (const container of containers) {
       container.style.display = "none";
     }
-    document.getElementById("add-money-container").style.display = "block";
+    document.getElementById(id + "-container").style.display = "block";
 
     const cards = document.getElementsByClassName("card");
     for (const card of cards) {
       card.classList.remove("active-card");
-      document.getElementById("add-money-card").classList.add("active-card");
     }
+    document.getElementById(id + "-card").classList.add("active-card");
   });
+}
+// add addEventListener on Add Money Card
+cardClick("add-money");
 // Add addEventListener on Cash Out Card
-document.getElementById("cash-out-card").addEventListener("click", function () {
-  for (const container of containers) {
-    container.style.display = "none";
-  }
-  document.getElementById("cash-out-container").style.display = "block";
-
-  const cards = document.getElementsByClassName("card");
-  for (const card of cards) {
-    card.classList.remove("active-card");
-    document.getElementById("cash-out-card").classList.add("active-card");
-  }
-});
+cardClick("cash-out");
 // Add addEventListener on Transfer Money Card
-document.getElementById("transfer-money-card").addEventListener("click", function () {
-  for (const container of containers) {
-    container.style.display = "none";
-  }
-  document.getElementById("transfer-money-container").style.display = "block";
+cardClick("transfer-money");
 
-  const cards = document.getElementsByClassName("card");
-  for (const card of cards) {
-    card.classList.remove("active-card");
-    document.getElementById("transfer-money-card").classList.add("active-card");
-  }
-});
-
-
+// add addEventListener on modal close button 
 document.getElementById("close-success-msg").addEventListener("click", function() {
   document.getElementById("success-msg-container").classList.add("hidden");
 });
